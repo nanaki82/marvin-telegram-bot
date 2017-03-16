@@ -1,0 +1,91 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR ORGANIZATION
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2017-03-16 17:32+0100\n"
+"PO-Revision-Date: 2017-03-16 17:38+0100\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: pygettext.py 1.5\n"
+"X-Generator: Poedit 1.8.12\n"
+"Last-Translator: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: it\n"
+
+#: /modules/events/event_command.py:68
+msgid "Bye! I hope we can talk again some day"
+msgstr "Ciao! Spero che un giorno tornerai a parlare con me"
+
+#: /modules/events/event_command.py:79
+msgid "You don't have the permission to create new event"
+msgstr "Non hai i permessi per creare un nuovo evento"
+
+#: /modules/events/event_command.py:88
+msgid "(1/4) Insert the title of the event"
+msgstr "(1/4) Inserisci il titolo dell’evento"
+
+#: /modules/events/event_command.py:101
+msgid "(2/4) Ok! Now set a description or /skip"
+msgstr "(2/4) Ok! Ora imposta la descrizione oppure /skip"
+
+#: /modules/events/event_command.py:113 /modules/events/event_command.py:119
+msgid ""
+"(3/4) Ok! Now set the date and the time (dd/mm/yyyy HH:mm format, eg "
+"30/10/1970 15:33)"
+msgstr ""
+"(3/4) Ok! Ora imposta la data e l’orario (nel formato gg/mm/aaaa HH:mm, "
+"ad esempio 30/10/1980 15:33)"
+
+#: /modules/events/event_command.py:127
+msgid "The date is in the past, insert correct date!"
+msgstr ""
+"La data che hai impostato è nel passato, inserisci una data corretta!"
+
+#: /modules/events/event_command.py:136
+msgid "(4/4) Last step! Set the location or /skip"
+msgstr "(4/4) Ultimo passo, imposta una località oppure /skip"
+
+#: /modules/events/event_command.py:148 /modules/events/event_command.py:153
+msgid "Yeah!!! Event created"
+msgstr "Yeah!!! Evento creato con successo"
+
+#: /modules/events/event_command.py:160
+msgid "There is no draft open for user {}"
+msgstr "Non c’è nessuna bozza aperta per l’utente corrente {}"
+
+#: /modules/events/event_inline.py:90
+msgid "Create new event..."
+msgstr "Crea nuovo evento"
+
+#: /modules/events/event_inline.py:127
+msgid "Users confirmed (<b>{total}</b>)\n"
+msgstr "Utenti confermati (<b>{total}</b>)\n"
+
+#: /modules/events/event_inline.py:135
+msgid "Users not confirmed ({total})\n"
+msgstr "Utenti non confermati ({total})\n"
+
+#: /modules/events/event_inline.py:143
+msgid "Users maybe ({total})\n"
+msgstr "Utenti in forse ({total})\n"
+
+#: /modules/events/event_inline.py:156
+msgid "Join"
+msgstr "Ok"
+
+#: /modules/events/event_inline.py:160
+msgid "Not go"
+msgstr "Non posso"
+
+#: /modules/events/event_inline.py:164
+msgid "Maybe"
+msgstr "In forse"
+
+#: /modules/events/event_model.py:49
+msgid "No user_id found in dictionary"
+msgstr "Nessun user_id trovato"

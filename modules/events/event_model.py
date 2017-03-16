@@ -3,8 +3,6 @@ import datetime
 from exceptions import MissingValueError
 from modules.abstract.model import MarvinModel
 
-_ = lambda s: s
-
 
 class Event(MarvinModel):
     id = None

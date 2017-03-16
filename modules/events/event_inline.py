@@ -1,7 +1,6 @@
 from typing import List
 
 from telegram import Bot
-from telegram import Emoji
 from telegram import InlineKeyboardButton
 from telegram import InlineKeyboardMarkup
 from telegram import InlineQueryResultArticle
@@ -15,8 +14,6 @@ from emoji import emojize
 
 from modules.events.event_model import Event
 from modules.events.event_repository import EventRepository
-
-_ = lambda s: s
 
 
 class EventInline:
@@ -124,7 +121,7 @@ class EventInline:
         text += '\n'
 
         if len(event.users_confirmed) > 0:
-            text += _('Users confirmed (<b>{total}</b>)\n'.format(total=len(event.users_confirmed)))
+            text += _('Users confirmed (<b>{total}</b>)\n').format(total=len(event.users_confirmed))
 
             for u in event.users_confirmed:
                 u = {k: v for k, v in u.items() if v is not None}
@@ -132,7 +129,7 @@ class EventInline:
                 text += ' (' + (u['first_name'] + ' ' + u.get('last_name', '')).strip() + ')\n'
 
         if len(event.users_not_confirmed) > 0:
-            text += _('Users not confirmed ({total})\n'.format(total=len(event.users_not_confirmed)))
+            text += _('Users not confirmed ({total})\n').format(total=len(event.users_not_confirmed))
 
             for u in event.users_not_confirmed:
                 u = {k: v for k, v in u.items() if v is not None}
@@ -140,7 +137,7 @@ class EventInline:
                 text += ' (' + (u['first_name'] + ' ' + u.get('last_name', '')).strip() + ')\n'
 
         if len(event.users_to_be_confirmed) > 0:
-            text += _('Users maybe ({total})\n'.format(total=len(event.users_to_be_confirmed)))
+            text += _('Users maybe ({total})\n').format(total=len(event.users_to_be_confirmed))
 
             for u in event.users_to_be_confirmed:
                 u = {k: v for k, v in u.items() if v is not None}

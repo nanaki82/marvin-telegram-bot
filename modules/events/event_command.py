@@ -14,7 +14,6 @@ from exceptions import NoDraftExistError
 from modules.events.event_model import Event
 from modules.events.event_repository import EventRepository
 
-_ = lambda s: s
 
 TITLE, DESCRIPTION, DATETIME, LOCATION = range(4)
 
@@ -157,6 +156,6 @@ class EventCommand:
         event = self.repository.find_draft(user_id)
 
         if not event:
-            raise NoDraftExistError(_('There is no draft open for user {}'.format(user_id)))
+            raise NoDraftExistError(_('There is no draft open for user {}').format(user_id))
         else:
             return event

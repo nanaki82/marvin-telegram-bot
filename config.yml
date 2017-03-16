@@ -1,8 +1,9 @@
+language: it # it or en
 
 environment: dev
 
 telegram:
-    token: ''
+    token: 'telegram_bot_token_here'
 
 permissions:
     events:
