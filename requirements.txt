@@ -1,0 +1,6 @@
+emoji==0.4.5
+telegram==0.0.1
+tinydb==3.2.0
+unittest_data_provider==1.0.1
+ruamel.base==1.0.0
+typing==3.5.3.0

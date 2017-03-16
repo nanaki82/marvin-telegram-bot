@@ -1,0 +1,12 @@
+
+environment: dev
+
+telegram:
+    token: ''
+
+permissions:
+    events:
+        create: [ 'anyone' ] # anyone or a list of username
+        modify: 'owner'      # owner or anyone
+        publish: 'owner'     # owner or anyone
+        reminder: 'owner'    # owner or anyone
