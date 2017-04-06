@@ -45,8 +45,7 @@ class EventRepository(Storage):
         return results
 
     def find_by_name(self, name: str):
-        events = self.db.search(Query().name.test(lambda v: name in v))
-
+        events = self.db.search(Query().title.test(lambda v: name in v))
         results = []
 
         for event in events:
@@ -55,8 +54,7 @@ class EventRepository(Storage):
         return results
 
     def find_by_name_and_user_id(self, name: str, user_id: int):
-        events = self.db.search((Query().user_id == user_id) & (Query().name.test(lambda v: name in v)))
-
+        events = self.db.search((Query().user_id == user_id) & (Query().title.test(lambda v: name in v)))
         results = []
 
         for event in events:

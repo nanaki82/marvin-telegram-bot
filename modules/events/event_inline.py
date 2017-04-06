@@ -63,9 +63,9 @@ class EventInline:
 
         results = events = []
 
-        if 'anyone' in self.permissions:
+        if 'anyone' == self.permissions['publish']:
             events = self.repository.find_by_name(query)  # type: List[Event]
-        if 'owner' in self.permissions:
+        if 'owner' == self.permissions['publish']:
             events = self.repository.find_by_name_and_user_id(query, user_id)  # type: List[Event]
 
         for event in events:
