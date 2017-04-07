@@ -73,7 +73,7 @@ class EventInline:
             result = InlineQueryResultArticle(id=event.id,
                                               title=event.title,
                                               description=event.formatted_date(),
-                                              thumb_url='http://i.imgur.com/y1cHJm7.png',
+                                              thumb_url='https://i.imgur.com/y1cHJm7.png',
                                               input_message_content=InputTextMessageContent(
                                                   self.create_event_message(event),
                                                   parse_mode=ParseMode.HTML
@@ -84,9 +84,8 @@ class EventInline:
         bot.answerInlineQuery(
             update.inline_query.id,
             results=results,
-            switch_pm_text=_('Create new event...'),
-            switch_pm_parameter='new',
-            is_personal=True
+            is_personal=False,
+            cache_time=10
         )
 
     def register_user(self, user: dict, event: Event, action: str) -> Event:

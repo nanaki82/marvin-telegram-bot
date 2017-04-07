@@ -1,19 +1,21 @@
 import time
 
-from telegram import Bot
+from telegram import Bot, ParseMode
 from telegram import ReplyKeyboardRemove
 from telegram import Update
-from telegram.ext import CommandHandler
+from telegram import InlineKeyboardMarkup
+from telegram.ext import CommandHandler, Job
 from telegram.ext import ConversationHandler
 from telegram.ext import Filters
 from telegram.ext import MessageHandler
+from telegram.ext.jobqueue import Days, JobQueue
 from typing import Tuple, Dict
 from datetime import datetime
 
 from exceptions import NoDraftExistError
 from modules.events.event_model import Event
 from modules.events.event_repository import EventRepository
-
+from modules.events.event_inline import EventInline
 
 TITLE, DESCRIPTION, DATETIME, LOCATION = range(4)
 
@@ -25,6 +27,7 @@ class EventCommand:
     def __init__(self, permissions: Dict[str, str]):
         self.handlers = [
             CommandHandler('reminder', self.reminder_command, pass_args=True, pass_job_queue=True, pass_chat_data=True),
+            CommandHandler('cancel_reminder', self.cancel_reminder_command, pass_chat_data=True),
             ConversationHandler(
                 per_chat=False,
                 entry_points=[CommandHandler('create', self.create_new_command, pass_args=True)],
@@ -56,8 +59,77 @@ class EventCommand:
 
             return False
 
-    def reminder_command(self, bot: Bot, update: Update):
-        pass
+    def reminder_command(self, bot: Bot, update: Update, args: list, job_queue: JobQueue, chat_data):
+        if len(args) < 2:
+            update.message.reply_text(_("The usage of reminder command is: /reminder <hours> <event_name>"))
+            return
+
+        try:
+            hour_interval = int(args[0])
+        except IndexError:
+            update.message.reply_text(_("The first argument must be an integer (hours)"))
+            return
+
+        del args[0]
+        event_name = ' ' . join(args)
+
+        events = self.repository.find_by_name(event_name)
+
+        if not events:
+            update.message.reply_text(_('No events found with name "{}"'.format(event_name)))
+            return
+        else:
+            event = events[0]
+
+        if update.message.from_user.id != event.user_id:
+            update.message.reply_text(_("You can't set a reminder on events created by others"))
+            return
+
+        chat_id = update.message.chat_id
+        job_name = str(event.id) + '_' + str(chat_id)
+
+        context = {
+            "chat_id": chat_id,
+            "event_id": event.id
+        }
+
+        if hour_interval < 1:
+            hour_interval = 1
+
+        interval = hour_interval * 3600
+
+        job = Job(self.reminder_message, interval=interval, repeat=True, context=context, days=Days.EVERY_DAY,
+                  name=job_name)
+
+        job_queue.put(job)
+        chat_data['job'] = job
+
+        update.message.reply_text(_('Reminder set! I will text "{}" event every {} hours in this chat'.format(event.title, int(interval/3600))))
+
+    @staticmethod
+    def cancel_reminder_command(bot: Bot, update: Update, chat_data):
+        if 'job' not in chat_data:
+            update.message.reply_text('You have no active timer')
+            return
+        else:
+            job = chat_data['job']
+
+        job.schedule_removal()
+        del chat_data['job']
+
+        update.message.reply_text(_("Reminder removed!"))
+
+    def reminder_message(self, bot: Bot, job: Job):
+        event = self.repository.find_by_id(job.context['event_id'])
+
+        if not event:
+            job.schedule_removal()
+            return
+
+        bot.sendMessage(job.context['chat_id'], text=EventInline.create_event_message(event),
+                        reply_markup=InlineKeyboardMarkup(
+                            inline_keyboard=EventInline.create_reply_keyboard(event)),
+                        parse_mode=ParseMode.HTML)
 
     def cancel_command(self, bot: Bot, update: Update) -> int:
         user_id = update.message.from_user.id
@@ -147,8 +219,13 @@ class EventCommand:
         update.message.reply_text(_('Yeah!!! Event created'))
         return ConversationHandler.END
 
-    @staticmethod
-    def skip_location_command(bot: Bot, update: Update) -> int:
+    def skip_location_command(self, bot: Bot, update: Update) -> int:
+        user_id = update.message.from_user.id
+
+        event = self.load_draft(user_id)
+        event.draft = False
+        self.repository.update(event)
+
         update.message.reply_text(_('Yeah!!! Event created'))
         return ConversationHandler.END
 

@@ -1,3 +1,5 @@
+import time
+
 from typing import List
 
 from tinydb import Query
@@ -20,9 +22,11 @@ class EventRepository(Storage):
 
     def remove_draft(self, user_id: int):
         self.db.remove((Query().user_id == user_id) & (Query().draft == True))
+        self.clear_cache()
 
     def update(self, event: Event):
         self.db.update(event.to_dict(), eids=[event.id])
+        self.clear_cache()
 
     def find_by_id(self, event_id: int):
         if not isinstance(event_id, int):
@@ -44,7 +48,7 @@ class EventRepository(Storage):
 
         return results
 
-    def find_by_name(self, name: str):
+    def find_by_name(self, name: str) -> List[Event]:
         events = self.db.search(Query().title.test(lambda v: name in v))
         results = []
 
@@ -53,8 +57,21 @@ class EventRepository(Storage):
 
         return results
 
-    def find_by_name_and_user_id(self, name: str, user_id: int):
+    def find_by_name_and_user_id(self, name: str, user_id: int) -> List[Event]:
         events = self.db.search((Query().user_id == user_id) & (Query().title.test(lambda v: name in v)))
+        results = []
+
+        for event in events:
+            results.append(Event.from_dict(event))
+
+        return results
+
+    def find_by_user_id(self, user_id: int, only_future: bool):
+        if only_future:
+            events = self.db.search((Query().user_id == user_id) & (Query().datetime > time.time()))
+        else:
+            events = self.db.search((Query().user_id == user_id))
+
         results = []
 
         for event in events:
