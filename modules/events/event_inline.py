@@ -127,6 +127,8 @@ class EventInline:
                 text += '@' + u['username'] if u.get('username') else ''
                 text += ' (' + (u['first_name'] + ' ' + u.get('last_name', '')).strip() + ')\n'
 
+            text += '\n'
+
         if len(event.users_not_confirmed) > 0:
             text += _('Users not confirmed ({total})\n').format(total=len(event.users_not_confirmed))
 
@@ -134,6 +136,8 @@ class EventInline:
                 u = {k: v for k, v in u.items() if v is not None}
                 text += '@' + u['username'] if u.get('username') else ''
                 text += ' (' + (u['first_name'] + ' ' + u.get('last_name', '')).strip() + ')\n'
+
+            text += '\n'
 
         if len(event.users_to_be_confirmed) > 0:
             text += _('Users maybe ({total})\n').format(total=len(event.users_to_be_confirmed))
