@@ -86,7 +86,8 @@ class EventCommand:
             return
 
         chat_id = update.message.chat_id
-        job_name = str(event.id) + '_' + str(chat_id)
+        user_id = update.message.from_user.id
+        job_name = str(user_id) + '_' + str(event.id) + '_' + str(chat_id)
 
         context = {
             "chat_id": chat_id,
@@ -109,10 +110,16 @@ class EventCommand:
     @staticmethod
     def cancel_reminder_command(bot: Bot, update: Update, chat_data):
         if 'job' not in chat_data:
-            update.message.reply_text('You have no active timer')
+            update.message.reply_text(_('There are no active timer'))
             return
         else:
-            job = chat_data['job']
+            job = chat_data['job'] # type: Job
+
+        user_id = update.message.from_user.id
+
+        if job.name.split('_')[0] != str(user_id):
+            update.message.reply_text(_('You can\'t remove the timer'))
+            return
 
         job.schedule_removal()
         del chat_data['job']

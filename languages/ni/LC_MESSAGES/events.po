@@ -5,21 +5,20 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2017-04-10 12:18+0200\n"
-"PO-Revision-Date: 2017-04-10 12:24+0200\n"
+"POT-Creation-Date: 2017-04-10 13:27+0200\n"
+"PO-Revision-Date: 2017-04-10 13:29+0200\n"
+"Last-Translator: \n"
 "Language-Team: \n"
+"Language: ni\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
 "X-Generator: Poedit 2.0\n"
-"Last-Translator: \n"
-"Language: ni\n"
 
 #: Marvin/modules/events/event_command.py:64
 msgid "The usage of reminder command is: /reminder <hours> <event_name>"
-msgstr ""
-"L’uso del comando martellamento e’: /reminder <hours> <event_name>"
+msgstr "L’uso del comando martellamento e’: /reminder <hours> <event_name>"
 
 #: Marvin/modules/events/event_command.py:70
 msgid "The first argument must be an integer (hours)"
@@ -27,50 +26,57 @@ msgstr "Il primo argomento deve essere un intero"
 
 #: Marvin/modules/events/event_command.py:85
 msgid "You can't set a reminder on events created by others"
-msgstr ""
-"Non puoi impostare un martellamento con un evento creato da un altro"
+msgstr "Non puoi impostare un martellamento con un evento creato da un altro"
 
-#: Marvin/modules/events/event_command.py:120
+#: Marvin/modules/events/event_command.py:113
+msgid "There are no active timer"
+msgstr "Non ci stanno martellamenti attivi"
+
+#: Marvin/modules/events/event_command.py:121
+msgid "You can't remove the timer"
+msgstr "Gioele non ci provare"
+
+#: Marvin/modules/events/event_command.py:127
 msgid "Reminder removed!"
 msgstr "Martellamento rimosso!"
 
-#: Marvin/modules/events/event_command.py:139
+#: Marvin/modules/events/event_command.py:146
 msgid "Bye! I hope we can talk again some day"
 msgstr "Ci vediamo presto"
 
-#: Marvin/modules/events/event_command.py:150
+#: Marvin/modules/events/event_command.py:157
 msgid "You don't have the permission to create new event"
 msgstr "Non puoi creare eventi"
 
-#: Marvin/modules/events/event_command.py:159
+#: Marvin/modules/events/event_command.py:166
 msgid "(1/4) Insert the title of the event"
-msgstr "(1/4) Che dobbiamo fa?"
+msgstr "(1/4) Che dobbiamo fare"
 
-#: Marvin/modules/events/event_command.py:172
+#: Marvin/modules/events/event_command.py:179
 msgid "(2/4) Ok! Now set a description or /skip"
 msgstr "(2/4) Che roba e’? or /skip"
 
-#: Marvin/modules/events/event_command.py:184
-#: Marvin/modules/events/event_command.py:190
+#: Marvin/modules/events/event_command.py:191
+#: Marvin/modules/events/event_command.py:197
 msgid ""
 "(3/4) Ok! Now set the date and the time (dd/mm/yyyy HH:mm format, eg "
 "30/10/1970 15:33)"
 msgstr "(3/4) Quando si fa? esempio -> 30/10/1970 15:33"
 
-#: Marvin/modules/events/event_command.py:198
+#: Marvin/modules/events/event_command.py:205
 msgid "The date is in the past, insert correct date!"
 msgstr "Hai sbagliato data!"
 
-#: Marvin/modules/events/event_command.py:207
+#: Marvin/modules/events/event_command.py:214
 msgid "(4/4) Last step! Set the location or /skip"
 msgstr "(4/4) Addo’ si fa? or /skip"
 
-#: Marvin/modules/events/event_command.py:219
-#: Marvin/modules/events/event_command.py:229
-msgid "Yeah!!! Event created"
-msgstr "Iammi nu poc!!"
-
+#: Marvin/modules/events/event_command.py:226
 #: Marvin/modules/events/event_command.py:236
+msgid "Yeah!!! Event created"
+msgstr "Iammi nu poc!! Creato"
+
+#: Marvin/modules/events/event_command.py:243
 msgid "There is no draft open for user {}"
 msgstr "Non ci sono bozze aprte per l’utente {}"
 
@@ -100,4 +106,4 @@ msgstr "Forse mollo"
 
 #: Marvin/modules/events/event_model.py:47
 msgid "No user_id found in dictionary"
-msgstr "Nessun utente trovato (user_id)"
+msgstr "Nessun utente (user_id) trovato"

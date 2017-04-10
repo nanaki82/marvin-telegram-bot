@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2017-04-07 12:34+0200\n"
-"PO-Revision-Date: 2017-04-07 12:34+0200\n"
+"POT-Creation-Date: 2017-04-10 13:30+0200\n"
+"PO-Revision-Date: 2017-04-10 13:30+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -15,8 +15,7 @@ msgstr ""
 
 #: Marvin/modules/events/event_command.py:64
 msgid "The usage of reminder command is: /reminder <hours> <event_name>"
-msgstr ""
-"The usage of reminder command is: /reminder <hours> <event_name>"
+msgstr "The usage of reminder command is: /reminder <hours> <event_name>"
 
 #: Marvin/modules/events/event_command.py:70
 msgid "The first argument must be an integer (hours)"
@@ -26,28 +25,36 @@ msgstr "The first argument must be an integer (hours)"
 msgid "You can't set a reminder on events created by others"
 msgstr "You can't set a reminder on events created by others"
 
-#: Marvin/modules/events/event_command.py:120
+#: Marvin/modules/events/event_command.py:113
+msgid "There are no active timer"
+msgstr "There are no active timer"
+
+#: Marvin/modules/events/event_command.py:121
+msgid "You can't remove the timer"
+msgstr "You can't remove the timer"
+
+#: Marvin/modules/events/event_command.py:127
 msgid "Reminder removed!"
 msgstr "Reminder removed!"
 
-#: Marvin/modules/events/event_command.py:139
+#: Marvin/modules/events/event_command.py:146
 msgid "Bye! I hope we can talk again some day"
 msgstr "Bye! I hope we can talk again some day"
 
-#: Marvin/modules/events/event_command.py:150
+#: Marvin/modules/events/event_command.py:157
 msgid "You don't have the permission to create new event"
 msgstr "You don't have the permission to create new event"
 
-#: Marvin/modules/events/event_command.py:159
+#: Marvin/modules/events/event_command.py:166
 msgid "(1/4) Insert the title of the event"
 msgstr "(1/4) Insert the title of the event"
 
-#: Marvin/modules/events/event_command.py:172
+#: Marvin/modules/events/event_command.py:179
 msgid "(2/4) Ok! Now set a description or /skip"
 msgstr "(2/4) Ok! Now set a description or /skip"
 
-#: Marvin/modules/events/event_command.py:184
-#: Marvin/modules/events/event_command.py:190
+#: Marvin/modules/events/event_command.py:191
+#: Marvin/modules/events/event_command.py:197
 msgid ""
 "(3/4) Ok! Now set the date and the time (dd/mm/yyyy HH:mm format, eg "
 "30/10/1970 15:33)"
@@ -55,44 +62,44 @@ msgstr ""
 "(3/4) Ok! Now set the date and the time (dd/mm/yyyy HH:mm format, eg "
 "30/10/1970 15:33)"
 
-#: Marvin/modules/events/event_command.py:198
+#: Marvin/modules/events/event_command.py:205
 msgid "The date is in the past, insert correct date!"
 msgstr "The date is in the past, insert correct date!"
 
-#: Marvin/modules/events/event_command.py:207
+#: Marvin/modules/events/event_command.py:214
 msgid "(4/4) Last step! Set the location or /skip"
 msgstr "(4/4) Last step! Set the location or /skip"
 
-#: Marvin/modules/events/event_command.py:219
-#: Marvin/modules/events/event_command.py:224
+#: Marvin/modules/events/event_command.py:226
+#: Marvin/modules/events/event_command.py:236
 msgid "Yeah!!! Event created"
 msgstr "Yeah!!! Event created"
 
-#: Marvin/modules/events/event_command.py:231
+#: Marvin/modules/events/event_command.py:243
 msgid "There is no draft open for user {}"
 msgstr "There is no draft open for user {}"
 
-#: Marvin/modules/events/event_inline.py:122
+#: Marvin/modules/events/event_inline.py:123
 msgid "Users confirmed (<b>{total}</b>)\n"
 msgstr "Users confirmed (<b>{total}</b>)\n"
 
-#: Marvin/modules/events/event_inline.py:130
+#: Marvin/modules/events/event_inline.py:133
 msgid "Users not confirmed ({total})\n"
 msgstr "Users not confirmed ({total})\n"
 
-#: Marvin/modules/events/event_inline.py:138
+#: Marvin/modules/events/event_inline.py:143
 msgid "Users maybe ({total})\n"
 msgstr "Users maybe ({total})\n"
 
-#: Marvin/modules/events/event_inline.py:151
+#: Marvin/modules/events/event_inline.py:156
 msgid "Join"
 msgstr "Join"
 
-#: Marvin/modules/events/event_inline.py:155
+#: Marvin/modules/events/event_inline.py:160
 msgid "Not go"
 msgstr "Not go"
 
-#: Marvin/modules/events/event_inline.py:159
+#: Marvin/modules/events/event_inline.py:164
 msgid "Maybe"
 msgstr "Maybe"
 
