@@ -71,7 +71,7 @@ class EventCommand:
             return
 
         del args[0]
-        event_name = ' ' . join(args)
+        event_name = ' '.join(args)
 
         events = self.repository.find_by_name(event_name)
 
@@ -91,7 +91,8 @@ class EventCommand:
 
         context = {
             "chat_id": chat_id,
-            "event_id": event.id
+            "event_id": event.id,
+            "user_id": user_id
         }
 
         if hour_interval < 1:
@@ -105,7 +106,9 @@ class EventCommand:
         job_queue.put(job)
         chat_data['job'] = job
 
-        update.message.reply_text(_('Reminder set! I will text "{}" event every {} hours in this chat'.format(event.title, int(interval/3600))))
+        update.message.reply_text(_(
+            'Reminder set! I will text "{}" event every {} hours in this chat'.format(event.title,
+                                                                                      int(interval / 3600))))
 
     @staticmethod
     def cancel_reminder_command(bot: Bot, update: Update, chat_data):
@@ -113,11 +116,11 @@ class EventCommand:
             update.message.reply_text(_('There are no active timer'))
             return
         else:
-            job = chat_data['job'] # type: Job
+            job = chat_data['job']  # type: Job
 
         user_id = update.message.from_user.id
 
-        if job.name.split('_')[0] != str(user_id):
+        if job.context['user_id'] != user_id:
             update.message.reply_text(_('You can\'t remove the timer'))
             return
 
